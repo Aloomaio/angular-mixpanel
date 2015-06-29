@@ -29,8 +29,8 @@ angular.module('analytics.mixpanel', [])
             if (!Object.prototype.hasOwnProperty.call(window, 'mixpanel')) {
                 throw 'Global `mixpanel` not available. Did you forget to include the library on the page?';
             }
-            
-            mixpanel.init(apiKey);            
+
+            mixpanel.init(apiKey, config);
 
             waitTillAsyncApiLoaded(function () {
                 if (superProperties) mixpanel.register(superProperties);
@@ -84,7 +84,7 @@ angular.module('analytics.mixpanel', [])
 
             apiKey = key;
         };
-        
+
         /**
          * Get or set the Mixpanel API config. This can be done via a provider config.
          *
@@ -92,11 +92,10 @@ angular.module('analytics.mixpanel', [])
          */
         this.config = function (userConfig) {
             if (!userConfig) return config;
-            
+
             config = userConfig;
         };
-        
-        }
+
         /**
          * Get or set a special set of properties to include/send with every event.
          *
