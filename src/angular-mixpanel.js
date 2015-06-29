@@ -85,6 +85,11 @@ angular.module('analytics.mixpanel', [])
             apiKey = key;
         };
         
+        /**
+         * Get or set the Mixpanel API config. This can be done via a provider config.
+         *
+         * @param userConfig your Mixpanel custom config
+         */
         this.config = function (userConfig) {
             if (!userConfig) return config;
             
