@@ -20,7 +20,7 @@
  */
 angular.module('analytics.mixpanel', [])
     .provider('$mixpanel', function () {
-        var apiKey, superProperties;
+        var apiKey, superProperties, config;
 
         /**
          * Init the mixpanel global
@@ -84,7 +84,14 @@ angular.module('analytics.mixpanel', [])
 
             apiKey = key;
         };
-
+        
+        this.config = function (userConfig) {
+            if (!userConfig) return config;
+            
+            config = userConfig;
+        };
+        
+        }
         /**
          * Get or set a special set of properties to include/send with every event.
          *
